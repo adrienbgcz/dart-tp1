@@ -19,7 +19,7 @@ void main() {
 
 
   bool checkPV(startingPV, fighter, startingPM) {
-    if(fighter.pv <= startingPV * 0.30 && fighter.pm == startingPM) {
+    if(fighter.pv <= startingPV * 0.30 && fighter.pm >= startingPM) {
       fighter.pv += startingPV * 0.50;
       fighter.pm = 0;
       return true;
@@ -36,8 +36,8 @@ void main() {
 
     while (fighter1.pv > 0 && fighter2.pv > 0) {
       tours ++;
-      perso1.recupPM();
-      perso2.recupPM();
+      fighter1.recupPM();
+      fighter2.recupPM();
       fighter1.pv -= fighter2.att();
 
       if(fighter2.pv <= 0) {
