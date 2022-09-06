@@ -18,7 +18,6 @@ class Perso {
 
   int att() {
     Random degats = Random();
-    if(arme.type == "lame") pv += 1;
     return degats.nextInt(10) + arme.att;
   }
 

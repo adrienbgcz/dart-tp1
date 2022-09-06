@@ -4,6 +4,8 @@
 library dart;
 
 import 'package:dart/src/Arme.dart';
+import 'package:dart/src/Epee.dart';
+import 'package:dart/src/Poignard.dart';
 import 'package:dart/src/Perso.dart';
 
 export 'src/dart_base.dart';
@@ -11,10 +13,10 @@ export 'src/dart_base.dart';
 // TODO: Export any libraries intended for clients of this package.
 
 void main() {
-  Arme arme1 = Arme("poignard", 1, "lame");
-  Arme arme2 = Arme("épée", 2, "lame");
-  Perso perso1 = Perso("toto", 120, 20, arme1);
-  Perso perso2 = Perso("tata", 100, 35, arme2);
+  Poignard poignard = Poignard("poignard", 1);
+  Epee epee = Epee("epee", 1);
+  Perso perso1 = Perso("toto", 120, 35, poignard);
+  Perso perso2 = Perso("tata", 100, 35, epee);
 
 
 
@@ -41,7 +43,7 @@ void main() {
       fighter1.pv -= fighter2.att();
 
       if(fighter2.pv <= 0) {
-        return;
+        break;
       } else {
         fighter2.pv -= fighter1.att();
       }
@@ -51,7 +53,7 @@ void main() {
 
       if (tours % 5 == 0) {
         if(fighter2.pv <= 0) {
-          return;
+          break;
         } else {
           if(checkPV(startingPv1, fighter1, startingPm1)) fighter1.pv -= fighter2.spec();
           if(checkPV(startingPv2, fighter2, startingPm2)) fighter2.pv -= fighter1.spec();
