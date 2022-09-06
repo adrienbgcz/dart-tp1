@@ -9,16 +9,18 @@ class Perso {
 
   Perso(this.name, this.pv, this.pm, this.arme);
 
-  int spec() {
-    int att1 = att();
-    int att2 = att();
+  Future<int> spec() async {
+    int att1 = await att();
+    int att2 = await att();
     int total = att1 + att2;
     return total;
   }
 
-  int att() {
+  Future<int> att() {
     Random degats = Random();
-    return degats.nextInt(10) + arme.att;
+
+    return Future.delayed(const Duration(seconds: 2),
+            () => degats.nextInt(10) + arme.att);
   }
 
   void recupPM() {

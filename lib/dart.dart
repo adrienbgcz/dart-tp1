@@ -34,7 +34,7 @@ void main() {
     return false;
   }
 
-  void fight(Perso fighter1, Perso fighter2) {
+  Future<void> fight(Perso fighter1, Perso fighter2) async {
     int tours = 0;
     double startingPv1 = fighter1.pv;
     double startingPv2 = fighter2.pv;
@@ -45,12 +45,12 @@ void main() {
       tours ++;
       fighter1.recupPM();
       fighter2.recupPM();
-      fighter1.pv -= fighter2.att();
+      fighter1.pv -= await fighter2.att();
 
       if(fighter2.pv <= 0) {
         break;
       } else {
-        fighter2.pv -= fighter1.att();
+        fighter2.pv -= await fighter1.att();
       }
 
       checkPV(startingPv1, fighter1, startingPm1);
@@ -60,8 +60,8 @@ void main() {
         if(fighter2.pv <= 0) {
           break;
         } else {
-          if(checkPV(startingPv1, fighter1, startingPm1)) fighter1.pv -= fighter2.spec();
-          if(checkPV(startingPv2, fighter2, startingPm2)) fighter2.pv -= fighter1.spec();
+          if(checkPV(startingPv1, fighter1, startingPm1)) fighter1.pv -= await fighter2.spec();
+          if(checkPV(startingPv2, fighter2, startingPm2)) fighter2.pv -= await fighter1.spec();
         }
       }
 
