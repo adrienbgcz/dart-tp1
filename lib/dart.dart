@@ -3,7 +3,6 @@
 /// More dartdocs go here.
 library dart;
 
-import 'package:dart/src/Arme.dart';
 import 'package:dart/src/Epee.dart';
 import 'package:dart/src/Nain.dart';
 import 'package:dart/src/Poignard.dart';
@@ -15,16 +14,18 @@ export 'src/dart_base.dart';
 // TODO: Export any libraries intended for clients of this package.
 
 void main() {
-  Troll troll = Troll(0);
-  Nain nain = Nain(0);
+
   Poignard poignard = Poignard("poignard", 1);
   Epee epee = Epee("epee", 1);
-  Perso perso1 = Perso("toto", 120, 35, poignard, troll);
-  Perso perso2 = Perso("tata", 100, 35, epee, nain);
+  Troll perso1 = Troll("toto", 120, 35, poignard);
+  Nain perso2 = Nain("tata", 100, 35, epee);
 
+  print("perso1 ${perso1.pv}");
+  print("perso2 ${perso2.pv}");
 
 
   bool checkPV(startingPV, fighter, startingPM) {
+
     if(fighter.pv <= startingPV * 0.30 && fighter.pm >= startingPM) {
       fighter.pv += startingPV * 0.50;
       fighter.pm = 0;

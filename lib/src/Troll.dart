@@ -1,10 +1,13 @@
-import 'Race.dart';
+import 'Perso.dart';
 
-class Troll extends Race {
-  Troll(super.force);
+class Troll extends Perso {
+  Troll(super.name, super.pv, super.pm, super.arme);
 
-  int addAtt() {
-    return super.force + 2;
+  @override
+  double get pv => changePv();
+
+  double changePv() {
+    return super.pv + 10;
   }
 
 }
