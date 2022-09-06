@@ -1,13 +1,15 @@
 import 'dart:math';
 import 'package:dart/src/Arme.dart';
+import 'Race.dart';
 
 class Perso {
   final String name;
   double pv;
   int pm;
   Arme arme;
+  Race race;
 
-  Perso(this.name, this.pv, this.pm, this.arme);
+  Perso(this.name, this.pv, this.pm, this.arme, this.race);
 
   int spec() {
     int att1 = att();
@@ -18,7 +20,7 @@ class Perso {
 
   int att() {
     Random degats = Random();
-    return degats.nextInt(10) + arme.att;
+    return degats.nextInt(10) + arme.att + race.force;
   }
 
   void recupPM() {

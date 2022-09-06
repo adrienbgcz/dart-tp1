@@ -7,7 +7,7 @@ class Epee extends Arme {
   int get att => addAtt();
 
   int addAtt() {
-    return super.att + 2;
+    return super.att + 3;
   }
 
   void printName() {
